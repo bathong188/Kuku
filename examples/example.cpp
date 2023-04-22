@@ -37,10 +37,10 @@ void print_table(const KukuTable &table)
 
 int main(int argc, char *argv[])
 {
-    if (argc != 5)
+    if (argc != 6)
     {
-        cout << "Usage: ./example table_size stash_size loc_func_count max_probe" << endl;
-        cout << "E.g., ./example 256 2 4 100" << endl;
+        cout << "Usage: ./example table_size stash_size loc_func_count bucket_count max_probe" << endl;
+        cout << "E.g., ./example 256 2 4 4 100" << endl;
 
         return 0;
     }
@@ -49,10 +49,11 @@ int main(int argc, char *argv[])
     auto stash_size = static_cast<table_size_type>(atoi(argv[2]));
     uint8_t loc_func_count = static_cast<uint8_t>(atoi(argv[3]));
     item_type loc_func_seed = make_random_item();
-    uint64_t max_probe = static_cast<uint64_t>(atoi(argv[4]));
+    uint8_t bucket_count = static_cast<uint8_t>(atoi(argv[4]));
+    uint64_t max_probe = static_cast<uint64_t>(atoi(argv[5]));
     item_type empty_item = make_item(0, 0);
 
-    KukuTable table(table_size, stash_size, loc_func_count, loc_func_seed, max_probe, empty_item);
+    KukuTable table(table_size, stash_size, loc_func_count, loc_func_seed, bucket_count, max_probe, empty_item);
 
     uint64_t round_counter = 0;
     while (true)

@@ -60,6 +60,16 @@ namespace kuku
     */
     constexpr std::uint32_t max_loc_func_count = 32;
 
+    /**
+    The smallest allowed number of buckets.
+    */
+    constexpr std::uint32_t min_bucket_count = 1;
+
+    /**
+    The largest allowed number of buckets.
+    */
+    constexpr std::uint32_t max_bucket_count = 32;
+
     constexpr int bytes_per_uint64 = sizeof(std::uint64_t);
 
     constexpr int bytes_per_item = sizeof(item_type);
