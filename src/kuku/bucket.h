@@ -1,3 +1,5 @@
+#pragma once
+
 #include<vector>
 #include"kuku/kuku.h"
 #include"kuku/common.h"
@@ -12,7 +14,7 @@ namespace kuku
         public: 
             bucket(size_t bucket_size) {
                 bucketArray = std::vector<item_type>();
-                bucketLength = bucketArray.max_size();
+                bucketLength = bucket_size;
             }
             //inserts an item into the bucket, returning a displaced element if it exists, the inserted item otherwise
             item_type insert(item_type item) {
@@ -28,7 +30,7 @@ namespace kuku
             }
 
             item_type get(int index) {
-                return bucketArray[i];
+                return bucketArray[index];
             }
             //Returns index of item if bucket contains item, -1 otherwise
             int contains(item_type item) {
